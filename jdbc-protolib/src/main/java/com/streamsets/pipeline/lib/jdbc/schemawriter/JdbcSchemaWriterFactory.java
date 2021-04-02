@@ -29,7 +29,9 @@ public class JdbcSchemaWriterFactory {
     } else if (connectionString.startsWith(RedshiftSchemaWriter.getConnectionPrefix())) {
       return new RedshiftSchemaWriter(dataSource);
     } else if (connectionString.startsWith(SQLServerSchemaWriter.getConnectionPrefix())) {
-      return new SQLServerSchemaWriter(dataSource);   
+      return new SQLServerSchemaWriter(dataSource);
+    } else if (connectionString.startsWith(SnowflakeSchemaWriter.getConnectionPrefix())) {
+        return new SnowflakeSchemaWriter(dataSource);
     } else {
       throw new JdbcStageCheckedException(JdbcErrors.JDBC_309, connectionString);
     }
